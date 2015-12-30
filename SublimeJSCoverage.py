@@ -133,8 +133,9 @@ class ShowJsCoverageCommand(sublime_plugin.TextCommand):
         for lineNumber in outlines:
             region = view.full_line(view.text_point(int(lineNumber) - 1, 0))
 
-            if outlines[lineNumber]:
-                goodOutlines.append(region)
+            if not outlines[lineNumber]:
+                # Do nothing if the line is covered
+                # goodOutlines.append(region)
             else:
                 badOutlines.append(region)
 
